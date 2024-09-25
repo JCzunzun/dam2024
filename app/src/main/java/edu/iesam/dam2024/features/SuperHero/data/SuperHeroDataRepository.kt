@@ -6,8 +6,12 @@ import edu.iesam.dam2024.features.SuperHero.domain.SuperHeroRepository
 
 class SuperHeroDataRepository(private val mockRemoteDataSource: SuperHeroMockRemoteDataSource) :
     SuperHeroRepository {
-    override fun getSupeHero(): List<SuperHero> {
-        return mockRemoteDataSource.getSuperHero()
+    override fun getSuperHeros(): List<SuperHero> {
+        return mockRemoteDataSource.getSupersHeros()
+    }
+
+    override fun getSuperHero(superHeroId: String): SuperHero? {
+        return mockRemoteDataSource.getSuperHero(superHeroId)
     }
 
 }

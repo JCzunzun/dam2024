@@ -2,7 +2,7 @@ package edu.iesam.dam2024.features.SuperHero.domain
 
 
 data class SuperHero(
-    val id: Int,
+    val id: String,
     val name: String,
     val slug: String,
     val powerstats: Powerstats,
