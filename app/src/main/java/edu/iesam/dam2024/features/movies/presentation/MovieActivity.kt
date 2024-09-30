@@ -10,16 +10,20 @@ import edu.iesam.dam2024.features.movies.data.local.MovieXMLLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MovieActivity : AppCompatActivity() {
+
     val xmlDataSource = MovieXMLLocalDataSource(this)
+
     private lateinit var movieFactory: MovieFactory
     private lateinit var viewModel: MovieViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val movies = viewModel.viewCreated()
-        bindDate(movies)
         movieFactory = MovieFactory(this)
         viewModel = movieFactory.buildViewModel()
+        val movies = viewModel.viewCreated()
+        bindDate(movies)
+
         Log.d("@dev", movies.toString())
         // testXml()
         testListXml()
