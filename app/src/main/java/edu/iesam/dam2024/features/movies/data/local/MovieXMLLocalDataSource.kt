@@ -42,22 +42,17 @@ class MovieXMLLocalDataSource(context: Context) {
 
     }
 
-    fun find(): Movie {
-
-        sharedPref.apply {
-
-            return Movie(
-                getString("id", "")!!,
-                getString("title", "")!!,
-                getString("poster", "")!!
-            )
-
+    fun findById(movieId: String): Movie? {
+        return sharedPref.getString(movieId, null).let { movie ->
+            gson.fromJson(movie, Movie::class.java)
         }
     }
 
     fun delete() {
         sharedPref.edit().clear().apply()
     }
-
+    fun deleteById(movieId: String) {
+        sharedPref.edit().remove(movieId).apply()
+    }
 
 }
