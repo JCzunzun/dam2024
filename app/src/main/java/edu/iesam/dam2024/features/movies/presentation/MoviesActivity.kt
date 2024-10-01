@@ -9,7 +9,7 @@ import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.data.local.MovieXMLLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
 
-class MovieActivity : AppCompatActivity() {
+class MoviesActivity : AppCompatActivity() {
 
     private lateinit var xmlDataSource: MovieXMLLocalDataSource
 
@@ -18,7 +18,7 @@ class MovieActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_movies)
         xmlDataSource = MovieXMLLocalDataSource(this)
         movieFactory = MovieFactory(this)
         viewModel = movieFactory.buildViewModel()
