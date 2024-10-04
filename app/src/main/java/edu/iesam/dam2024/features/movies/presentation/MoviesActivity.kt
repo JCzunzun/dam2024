@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.data.local.MovieXMLLocalDataSource
 import edu.iesam.dam2024.features.movies.domain.Movie
@@ -23,16 +24,29 @@ class MoviesActivity : AppCompatActivity() {
         movieFactory = MovieFactory(this)
         viewModel = movieFactory.buildViewModel()
         val movies = viewModel.viewCreated()
-        bindDate(movies)
-
+        //bindDate(movies)
+/*
         Log.d("@dev", movies.toString())
         // testXml()
         testListXml()
         val moviesFromXml = xmlDataSource.findAll()
-        Log.d("@dev", moviesFromXml.toString())
+        Log.d("@dev", moviesFromXml.toString()*/
+        val movieObserver = Observer<MovieViewModel.UiState>{uiState ->
+            uiState.movies?.let {
+                bindDate(it)
+            }
+            uiState.errorApp?.let{
+                //pintar el error
+            }
+            uiState.isLoading?. let {
+                //muestra cargando...
+            }
+
+        }
+        viewModel.uiState.observe(this, movieObserver )
 
     }
-
+/*
     private fun testXml() {
 
         val movie = viewModel.itemSelected("1")
@@ -51,7 +65,7 @@ class MoviesActivity : AppCompatActivity() {
         val xmlDataSource = MovieXMLLocalDataSource(this)
         xmlDataSource.saveAll(movies)
     }
-
+*/
     private fun bindDate(movies: List<Movie>) {
             findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
             findViewById<TextView>(R.id.movie_tittle_1).text = movies[0].title
@@ -70,6 +84,14 @@ class MoviesActivity : AppCompatActivity() {
 
 
         }
+    private fun whenError(error:ErrorApp){
+        when(error){
+            ErrorApp.DataErrorApp -> TODO()
+            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.ServerErrorApp -> TODO()
+            ErrorApp.UnknowErrorApp -> TODO()
+        }
+    }
 
 
 }
