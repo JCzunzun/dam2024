@@ -44,6 +44,10 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.glide)
+
+    implementation(libs.gson.serializer)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
