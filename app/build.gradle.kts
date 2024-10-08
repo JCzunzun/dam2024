@@ -54,6 +54,7 @@ dependencies {
     implementation("androidx.navigation:navigation-ui:2.8.2")
 
     implementation(libs.gson.serializer)
+    implementation(libs.androidx.navigation.ui.ktx)
 
 
     testImplementation(libs.junit)

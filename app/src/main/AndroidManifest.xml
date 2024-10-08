@@ -16,7 +16,7 @@
         <activity android:name=".features.movies.presentation.MovieDetailActivity"
             android:exported="true"/>
         <activity
-            android:name=".features.movies.presentation.MoviesFragment"
+            android:name=".features.movies.presentation.MoviesActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

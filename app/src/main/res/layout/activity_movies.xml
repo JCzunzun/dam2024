@@ -8,6 +8,7 @@
     tools:context=".features.movies.presentation.MoviesActivity">
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment_1"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph = "@navigation/nav_graph"
         app:defaultNavHost="true"
@@ -15,6 +16,7 @@
         android:layout_height="match_parent" />
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment_2"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph = "@navigation/nav_graph"
         app:defaultNavHost="true"

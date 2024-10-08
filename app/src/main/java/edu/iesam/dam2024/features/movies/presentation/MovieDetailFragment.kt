@@ -1,12 +1,17 @@
 package edu.iesam.dam2024.features.movies.presentation
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import edu.iesam.dam2024.app.loadUrl
 import edu.iesam.dam2024.databinding.FragmentMovieDetailBinding
+import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MovieDetailFragment :Fragment(){
 
@@ -15,6 +20,7 @@ class MovieDetailFragment :Fragment(){
 
     private var _binding: FragmentMovieDetailBinding? = null
     private  val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,9 +36,21 @@ class MovieDetailFragment :Fragment(){
         setUpObeserver()
         movieFactory = MovieFactory(requireContext())
         viewModel= movieFactory.buildMovieDetailViewModel()
-        viewModel.viewCreated()
+       /* getMovieId()?.let { movieId ->
+            viewModel.viewCreated(movieId)?.let { movie ->
+                viewModel.viewCreated(movieId)
+            }
+        }*/
     }
+    /*
+    private fun getMovieId(): String? {
+        //return intent.getStringExtra(KEY_MOVIE_ID)
+    }*/
 
+    private fun bindData(movie: Movie) {
+        val imageView = binding.poster
+        imageView.loadUrl(movie.poster)
+    }
     private fun  setUpObeserver(){
         val movieObserver= Observer<MovieDetailViewModel.UiState>{uiState ->
             uiState.movie?.let {
@@ -50,6 +68,32 @@ class MovieDetailFragment :Fragment(){
                 Log.d("@dev", "Cargando ...")
             }
         }
-        viewModel.uiState.observe(this, movieObserver)
+        viewModel.uiState.observe(viewLifecycleOwner, movieObserver)
     }
+
+    private fun showError(error: ErrorApp) {
+        when (error) {
+            ErrorApp.DataErrorApp -> TODO()
+            ErrorApp.InternetErrorApp -> TODO()
+            ErrorApp.ServerErrorApp -> TODO()
+            ErrorApp.UnknowErrorApp -> TODO()
+        }
+    }
+
+
+    companion object {
+        val KEY_MOVIE_ID = "key_movie_id"
+
+        fun getIntent(context: Context, movieId: String): Intent {
+            val intent = Intent(context, MovieDetailActivity::class.java)
+            intent.putExtra(KEY_MOVIE_ID, movieId)
+            return intent
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding= null
+    }
+
 }

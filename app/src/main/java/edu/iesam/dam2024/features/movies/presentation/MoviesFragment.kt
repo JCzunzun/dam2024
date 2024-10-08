@@ -64,27 +64,27 @@ class MoviesFragment : Fragment() {
         binding.movieId1.text = movies[0].id
         binding.movieTittle1.text = movies[0].title
         binding.movieTittle1.setOnClickListener {
-            findNavController().navigate()
+            findNavController().navigate(R.id.action_movie_fragment_to_movie_detail_fragment2)
         }
         binding.movieId2.text = movies[1].id
         binding.movieTittle2.text = movies[1].title
         binding.movieTittle2.setOnClickListener {
-            navigateToMovieDetail(movies[1].id)
+            findNavController().navigate(movies[1].id)
         }
 
         binding.movieId3.text = movies[2].id
         binding.movieTittle3.text = movies[2].title
         binding.movieTittle3.setOnClickListener {
-            navigateToMovieDetail(movies[2].id)
+            findNavController().navigate(movies[2].id)
         }
 
     }
 
     private fun navigateToMovieDetail(superHeroId: String) {
-        startActivity(MovieDetailActivity.getIntent(requireContext(), superHeroId))
+        startActivity(MovieDetailFragment.getIntent(requireContext(), superHeroId))
     }
 
-    private fun wshowError(error: ErrorApp) {
+    private fun showError(error: ErrorApp) {
         when (error) {
             ErrorApp.DataErrorApp -> TODO()
             ErrorApp.InternetErrorApp -> TODO()

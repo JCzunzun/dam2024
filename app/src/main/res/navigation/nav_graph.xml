@@ -8,7 +8,16 @@
     <fragment
         android:id="@+id/movie_fragment"
         android:name="edu.iesam.dam2024.features.movies.presentation.MoviesFragment"
-        tools:layout="@layout/fragment_movies"
+        tools:layout="@layout/fragment_movies">
+
+        <action
+            android:id="@+id/action_movie_fragment_to_movie_detail_fragment2"
+            app:destination="@id/movie_detail_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movie_detail_fragment"
+        android:name="edu.iesam.dam2024.features.movies.presentation.MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail"/>
 
 
 </navigation>
