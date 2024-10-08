@@ -12,7 +12,7 @@ import edu.iesam.dam2024.app.loadUrl
 import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MovieDetailActivity: AppCompatActivity() {
-
+/*
     private lateinit var movieFactory: MovieFactory
     private lateinit var viewModel: MovieDetailViewModel
 
@@ -25,6 +25,6 @@ class MovieDetailActivity: AppCompatActivity() {
 
 
     }
-
+*/
 }
 

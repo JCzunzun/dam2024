@@ -12,10 +12,7 @@ import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MoviesActivity : AppCompatActivity() {
 
-    private lateinit var xmlDataSource: MovieXMLLocalDataSource
 
-    private lateinit var movieFactory: MovieFactory
-    private lateinit var viewModel: MovieViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -9,11 +9,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import edu.iesam.dam2024.app.loadUrl
 import edu.iesam.dam2024.databinding.FragmentMovieDetailBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
 
 class MovieDetailFragment :Fragment(){
+
+    val args: MovieDetailFragmentArgs by navArgs()
 
     private lateinit var movieFactory: MovieFactory
     private lateinit var viewModel: MovieDetailViewModel
@@ -36,16 +39,17 @@ class MovieDetailFragment :Fragment(){
         setUpObeserver()
         movieFactory = MovieFactory(requireContext())
         viewModel= movieFactory.buildMovieDetailViewModel()
-       /* getMovieId()?.let { movieId ->
+
+       getMovieId()?.let { movieId ->
             viewModel.viewCreated(movieId)?.let { movie ->
                 viewModel.viewCreated(movieId)
             }
-        }*/
+        }
     }
-    /*
+
     private fun getMovieId(): String? {
-        //return intent.getStringExtra(KEY_MOVIE_ID)
-    }*/
+        return args.idMovie
+    }
 
     private fun bindData(movie: Movie) {
         val imageView = binding.poster

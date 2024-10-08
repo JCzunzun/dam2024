@@ -34,10 +34,10 @@ class MoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpObeserver()
         movieFactory = MovieFactory(requireContext())
         viewModel= movieFactory.buildViewModel()
         viewModel.viewCreated()
+        setUpObeserver()
     }
 
     private fun  setUpObeserver(){
@@ -64,18 +64,19 @@ class MoviesFragment : Fragment() {
         binding.movieId1.text = movies[0].id
         binding.movieTittle1.text = movies[0].title
         binding.movieTittle1.setOnClickListener {
-            findNavController().navigate(R.id.action_movie_fragment_to_movie_detail_fragment2)
+            findNavController().navigate(MoviesFragmentDirections.actionMovieFragmentToMovieDetailFragment2(idMovie = movies[0].id))
         }
         binding.movieId2.text = movies[1].id
         binding.movieTittle2.text = movies[1].title
         binding.movieTittle2.setOnClickListener {
-            findNavController().navigate(movies[1].id)
+            findNavController().navigate(R.id.action_movie_fragment_to_movie_detail_fragment2)
+
         }
 
         binding.movieId3.text = movies[2].id
         binding.movieTittle3.text = movies[2].title
         binding.movieTittle3.setOnClickListener {
-            findNavController().navigate(movies[2].id)
+            findNavController().navigate(R.id.action_movie_fragment_to_movie_detail_fragment2)
         }
 
     }
