@@ -17,15 +17,20 @@ class SuperHeroViewModel(
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
     fun viewCreated(){
+        _uiState.value = (UiState(isLoading = true))
         viewModelScope.launch (Dispatchers.IO){
-            getSuperHerosUseCase.invoke()
-
+            val superHeros=getSuperHerosUseCase.invoke()
+            _uiState.postValue(UiState(superHeros= superHeros))
         }
 
     }
 
+
+
     data class UiState(
-        val superHeroes: List<SuperHero> = emptyList()
+        val isLoading : Boolean = false,
+        val errorApp: ErrorApp? = null,
+        val superHeros: List<SuperHero>?=null
     )
 
 }

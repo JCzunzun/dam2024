@@ -29,7 +29,7 @@ class SuperHeroDetailActivity : AppCompatActivity() {
     }
 
     private fun  setUpObeserver(){
-        val movieObserver=
+        val superHeroObserver=
             androidx.lifecycle.Observer<SuperHeroDetailViewModel.UiState> { uiState ->
                 uiState.superHero?.let {
                     bindData(it)
@@ -45,7 +45,7 @@ class SuperHeroDetailActivity : AppCompatActivity() {
                     Log.d("@dev", "Cargando ...")
                 }
             }
-        viewModel.uiState.observe(this, movieObserver)
+        viewModel.uiState.observe(this, superHeroObserver)
     }
 
     private fun getSuperHeroId(): String? {
