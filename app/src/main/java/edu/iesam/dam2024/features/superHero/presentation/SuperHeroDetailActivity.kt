@@ -54,7 +54,7 @@ class SuperHeroDetailActivity : AppCompatActivity() {
 
     private fun bindData(superHero: SuperHero) {
         val imageView = findViewById<ImageView>(R.id.imagen)
-        imageView.loadUrl(superHero.images.sm)
+        imageView.loadUrl(superHero.images)
     }
 
     companion object {

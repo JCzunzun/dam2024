@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures{
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -44,6 +47,11 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.glide)
+
+    api(libs.nav.fragment.ktx)
+
+    implementation("androidx.navigation:navigation-fragment:2.8.2")
+    implementation("androidx.navigation:navigation-ui:2.8.2")
 
     implementation(libs.gson.serializer)
 

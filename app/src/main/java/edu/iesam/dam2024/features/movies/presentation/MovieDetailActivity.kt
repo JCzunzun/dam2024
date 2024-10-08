@@ -30,25 +30,7 @@ class MovieDetailActivity: AppCompatActivity() {
         }
     }
 
-    private fun  setUpObeserver(){
-        val movieObserver= Observer<MovieDetailViewModel.UiState>{uiState ->
-            uiState.movie?.let {
-                bindData(it)
-            }
-            uiState.errorApp?.let {
-                //pinto error
-            }
-            if(uiState.isLoading){
-                //muestro el cargando
-                Log.d("@dev", "Cargando ...")
-            }
-            else{
-                //oculto  el cargando
-                Log.d("@dev", "Cargando ...")
-            }
-        }
-        viewModel.uiState.observe(this, movieObserver)
-    }
+
 
     private fun getMovieId(): String? {
         return intent.getStringExtra(KEY_MOVIE_ID)
