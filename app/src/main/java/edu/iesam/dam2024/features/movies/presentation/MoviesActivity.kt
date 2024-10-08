@@ -25,67 +25,74 @@ class MoviesActivity : AppCompatActivity() {
         viewModel = movieFactory.buildViewModel()
         val movies = viewModel.viewCreated()
         //bindDate(movies)
-/*
-        Log.d("@dev", movies.toString())
-        // testXml()
-        testListXml()
-        val moviesFromXml = xmlDataSource.findAll()
-        Log.d("@dev", moviesFromXml.toString()*/
-        val movieObserver = Observer<MovieViewModel.UiState>{uiState ->
+        /*
+                Log.d("@dev", movies.toString())
+                // testXml()
+                testListXml()
+                val moviesFromXml = xmlDataSource.findAll()
+                Log.d("@dev", moviesFromXml.toString()*/
+        val movieObserver = Observer<MovieViewModel.UiState> { uiState ->
             uiState.movies?.let {
                 bindDate(it)
             }
-            uiState.errorApp?.let{
+            uiState.errorApp?.let {
                 //pintar el error
             }
-            uiState.isLoading?. let {
+            uiState.isLoading?.let {
                 //muestra cargando...
             }
 
         }
-        viewModel.uiState.observe(this, movieObserver )
-
-    }
-/*
-    private fun testXml() {
-
-        val movie = viewModel.itemSelected("1")
-        movie?.let {
-            xmlDataSource.save(it)
-        }
-        //val movieSaved = xmlDataSource.find()
-        //Log.d("@dev", movieSaved.toString())
-
-        xmlDataSource.delete()
+        viewModel.uiState.observe(this, movieObserver)
 
     }
 
-    private fun testListXml() {
-        val movies = viewModel.viewCreated()
-        val xmlDataSource = MovieXMLLocalDataSource(this)
-        xmlDataSource.saveAll(movies)
-    }
-*/
-    private fun bindDate(movies: List<Movie>) {
-            findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
-            findViewById<TextView>(R.id.movie_tittle_1).text = movies[0].title
-            findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
-                val movie1: Movie? = viewModel.itemSelected(movies[0].id)
-                movie1?.let {
-                    Log.d("@dev", "Pelicula seleccionada: ${it.title}")
-                }
+    /*
+        private fun testXml() {
+
+            val movie = viewModel.itemSelected("1")
+            movie?.let {
+                xmlDataSource.save(it)
             }
-            findViewById<TextView>(R.id.movie_id_2).text = movies[1].id
-            findViewById<TextView>(R.id.movie_tittle_2).text = movies[1].title
+            //val movieSaved = xmlDataSource.find()
+            //Log.d("@dev", movieSaved.toString())
 
-            findViewById<TextView>(R.id.movie_id_3).text = movies[2].id
-            findViewById<TextView>(R.id.movie_tittle_3).text = movies[2].title
-
-
+            xmlDataSource.delete()
 
         }
-    private fun whenError(error:ErrorApp){
-        when(error){
+
+        private fun testListXml() {
+            val movies = viewModel.viewCreated()
+            val xmlDataSource = MovieXMLLocalDataSource(this)
+            xmlDataSource.saveAll(movies)
+        }
+    */
+    private fun bindDate(movies: List<Movie>) {
+        findViewById<TextView>(R.id.movie_id_1).text = movies[0].id
+        findViewById<TextView>(R.id.movie_tittle_1).text = movies[0].title
+        findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
+            navigateToMovieDetail(movies[0].id)
+        }
+        findViewById<TextView>(R.id.movie_id_2).text = movies[1].id
+        findViewById<TextView>(R.id.movie_tittle_2).text = movies[1].title
+        findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
+            navigateToMovieDetail(movies[1].id)
+        }
+
+        findViewById<TextView>(R.id.movie_id_3).text = movies[2].id
+        findViewById<TextView>(R.id.movie_tittle_3).text = movies[2].title
+        findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
+            navigateToMovieDetail(movies[2].id)
+        }
+
+    }
+
+    private fun navigateToMovieDetail(superHeroId: String) {
+        startActivity(MovieDetailActivity.getIntent(this, superHeroId))
+    }
+
+    private fun whenError(error: ErrorApp) {
+        when (error) {
             ErrorApp.DataErrorApp -> TODO()
             ErrorApp.InternetErrorApp -> TODO()
             ErrorApp.ServerErrorApp -> TODO()

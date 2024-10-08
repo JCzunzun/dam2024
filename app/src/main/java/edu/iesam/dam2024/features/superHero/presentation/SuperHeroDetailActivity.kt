@@ -23,7 +23,7 @@ class SuperHeroDetailActivity : AppCompatActivity() {
         setUpObeserver()
         getSuperHeroId()?.let { superHeroId ->
             viewModel.viewCreated(superHeroId)?.let { superHero ->
-                bindData(superHero)
+                viewModel.viewCreated(superHeroId)
             }
         }
     }

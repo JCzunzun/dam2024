@@ -2,6 +2,8 @@ package edu.iesam.dam2024.features.superHero.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.superHero.data.local.SuperHeroXmlLocalDataSource
@@ -20,7 +22,7 @@ class SuperHeroActivity : AppCompatActivity() {
         superHeroFactory= SuperHeroFactory(this)
         viewModel = superHeroFactory.buildViewModel()
         viewModel.viewCreated()
-
+        setUpObeserver()
 
 
     }
@@ -44,10 +46,30 @@ class SuperHeroActivity : AppCompatActivity() {
         viewModel.uiState.observe(this, superHeroObserver)
     }
 
-    private fun bindData(superHeros: List<SuperHero>){
+    private fun bindData(superHeros: List<SuperHero>) {
+        findViewById<TextView>(R.id.superhero_id_1).text = superHeros[0].id
+        findViewById<TextView>(R.id.superhero_name_1).text = superHeros[0].name
+        findViewById<LinearLayout>(R.id.layout_1).setOnClickListener {
+            navigateToSuperHeroDetail(superHeros[0].id)
+        }
+
+        findViewById<TextView>(R.id.superhero_id_2).text = superHeros[1].id
+        findViewById<TextView>(R.id.superhero_name_2).text = superHeros[1].name
+        findViewById<LinearLayout>(R.id.layout_2).setOnClickListener {
+            navigateToSuperHeroDetail(superHeros[1].id)
+        }
+
+        findViewById<TextView>(R.id.superhero_id_3).text = superHeros[2].id
+        findViewById<TextView>(R.id.superhero_name_3).text = superHeros[2].name
+        findViewById<LinearLayout>(R.id.layout_3).setOnClickListener {
+            navigateToSuperHeroDetail(superHeros[2].id)
+        }
 
     }
 
+    private fun navigateToSuperHeroDetail(superHeroId: String) {
+        startActivity(SuperHeroDetailActivity.getIntent(this, superHeroId))
+    }
 
     private fun whenError(error: ErrorApp){
         when(error){
