@@ -49,6 +49,7 @@ class MovieDetailFragment :Fragment(){
 
     private fun bindData(movie: Movie) {
         binding.poster.loadUrl(movie.poster)
+        binding.movieTittle.text = movie.title
     }
     private fun  setUpObeserver(){
         val movieObserver= Observer<MovieDetailViewModel.UiState>{uiState ->
@@ -80,15 +81,6 @@ class MovieDetailFragment :Fragment(){
     }
 
 
-    companion object {
-        val KEY_MOVIE_ID = "key_movie_id"
-
-        fun getIntent(context: Context, movieId: String): Intent {
-            val intent = Intent(context, MovieDetailActivity::class.java)
-            intent.putExtra(KEY_MOVIE_ID, movieId)
-            return intent
-        }
-    }
 
     override fun onDestroy() {
         super.onDestroy()

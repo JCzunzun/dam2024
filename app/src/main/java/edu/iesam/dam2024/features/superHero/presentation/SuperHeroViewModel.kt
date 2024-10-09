@@ -16,7 +16,7 @@ class SuperHeroViewModel(
 ) : ViewModel() {
     private val _uiState = MutableLiveData<UiState>()
     val uiState: LiveData<UiState> = _uiState
-    fun viewCreated(){
+    fun loadSuperHeros(){
         _uiState.value = (UiState(isLoading = true))
         viewModelScope.launch (Dispatchers.IO){
             val superHeros=getSuperHerosUseCase.invoke()
