@@ -5,12 +5,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import edu.iesam.dam2024.R
 import edu.iesam.dam2024.databinding.FragmentMoviesBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
 
@@ -82,9 +79,6 @@ class MoviesFragment : Fragment() {
 
     }
 
-    private fun navigateToMovieDetail(superHeroId: String) {
-        startActivity(MovieDetailFragment.getIntent(requireContext(), superHeroId))
-    }
 
     private fun showError(error: ErrorApp) {
         when (error) {

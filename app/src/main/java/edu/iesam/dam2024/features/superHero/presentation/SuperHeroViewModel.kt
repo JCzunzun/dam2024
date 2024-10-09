@@ -26,7 +26,6 @@ class SuperHeroViewModel(
     }
 
 
-
     data class UiState(
         val isLoading : Boolean = false,
         val errorApp: ErrorApp? = null,
