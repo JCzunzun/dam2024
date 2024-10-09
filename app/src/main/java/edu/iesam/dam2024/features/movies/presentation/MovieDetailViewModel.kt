@@ -21,6 +21,7 @@ class MovieDetailViewModel (
     fun viewCreated(movieId: String) {
         viewModelScope.launch (Dispatchers.IO){
             val movie = getMovieUseCase.invoke(movieId)
+            _uiState.postValue(UiState(movie = movie))
         }
     }
     data class UiState(

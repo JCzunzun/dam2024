@@ -31,29 +31,24 @@ class MovieDetailFragment :Fragment(){
     ): View? {
         _binding= FragmentMovieDetailBinding.inflate(inflater, container, false)
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpObeserver()
         movieFactory = MovieFactory(requireContext())
         viewModel= movieFactory.buildMovieDetailViewModel()
-
-       getMovieId()?.let { movieId ->
-            viewModel.viewCreated(movieId)?.let { movie ->
-                viewModel.viewCreated(movieId)
-            }
+        setUpObeserver()
+        args.idMovie?.let {
+            viewModel.viewCreated(it)
         }
+
     }
 
-    private fun getMovieId(): String? {
-        return args.idMovie
-    }
+
 
     private fun bindData(movie: Movie) {
-        val imageView = binding.poster
-        imageView.loadUrl(movie.poster)
+        binding.poster.loadUrl(movie.poster)
     }
     private fun  setUpObeserver(){
         val movieObserver= Observer<MovieDetailViewModel.UiState>{uiState ->
