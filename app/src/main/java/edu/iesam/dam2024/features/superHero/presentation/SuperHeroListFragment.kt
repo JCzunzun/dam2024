@@ -1,12 +1,15 @@
 package edu.iesam.dam2024.features.superHero.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import edu.iesam.dam2024.databinding.FragmentSuperheroListBinding
+import edu.iesam.dam2024.features.superHero.domain.SuperHero
 
 class SuperHeroListFragment : Fragment() {
     private var _binding: FragmentSuperheroListBinding?= null
@@ -34,8 +37,30 @@ class SuperHeroListFragment : Fragment() {
 
     private fun setupObserver(){
         val observer = Observer <SuperHeroViewModel.UiState>{
-
+                uiState ->
+            uiState.superHeros?.let {
+                bindData(it)
+            }
+            uiState.errorApp?.let {
+                //pinto error
+            }
+            if(uiState.isLoading){
+                //muestro el cargando
+                Log.d("@dev", "Cargando ...")
+            }
+            else{
+                //oculto  el cargando
+                Log.d("@dev", "Cargando ...")
+            }
         }
         viewModel.uiState.observe(viewLifecycleOwner, observer)
+    }
+
+    private fun bindData(superHeros: List<SuperHero>){
+        binding.superheroId1.text = superHeros[0].id
+        binding.superheroName1.text= superHeros[0].name
+        binding.layout1.setOnClickListener{
+            findNavController().navigate()
+        }
     }
 }
