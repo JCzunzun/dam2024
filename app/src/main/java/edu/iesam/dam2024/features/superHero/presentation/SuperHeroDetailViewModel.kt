@@ -20,6 +20,7 @@ class SuperHeroDetailViewModel(
     fun viewCreated(superHeroId: String) {
         viewModelScope.launch (Dispatchers.IO){
             val superHero= getSuperHeroUseCase.invoke(superHeroId)
+            _uiState.postValue(UiState(superHero = superHero))
         }
 
     }

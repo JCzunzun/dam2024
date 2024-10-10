@@ -2,16 +2,32 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#E5CCFF">
 
     <ImageView
-
+        android:id="@+id/image_superhero"
         android:layout_width="230dp"
         android:layout_height="160dp"
         android:layout_marginTop="35dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/name_superhero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/image_superhero"
+        app:layout_constraintEnd_toEndOf="@id/image_superhero"
+        app:layout_constraintStart_toStartOf="@id/image_superhero"
+        android:textStyle="bold"
+        android:background="@drawable/shape_drawable"
+        android:layout_marginTop="28dp"
+        android:textAlignment="center"
+        android:textSize="29dp"
+
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

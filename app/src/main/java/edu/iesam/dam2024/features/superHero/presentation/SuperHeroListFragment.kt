@@ -66,17 +66,17 @@ class SuperHeroListFragment : Fragment() {
         binding.superheroId1.text = superHeros[0].id
         binding.superheroName1.text= superHeros[0].name
         binding.layout1.setOnClickListener{
-            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment( ))
+            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment(idHero = superHeros[0].id))
         }
         binding.superheroId2.text = superHeros[1].id
         binding.superheroName2.text= superHeros[1].name
-        binding.layout1.setOnClickListener{
-            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment())
+        binding.layout2.setOnClickListener{
+            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment(idHero = superHeros[1].id))
         }
         binding.superheroId3.text = superHeros[2].id
         binding.superheroName3.text= superHeros[2].name
-        binding.layout1.setOnClickListener{
-            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment())
+        binding.layout3.setOnClickListener{
+            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment(idHero = superHeros[2].id))
         }
 
     }

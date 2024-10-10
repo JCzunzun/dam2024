@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/superHeroListFragment">
+    app:startDestination="@id/superheros_frsgment">
 
     <fragment
         android:id="@+id/movie_fragment"
@@ -23,32 +23,30 @@
             app:destination="@id/movie_fragment" />
         <argument
             android:name="idMovie"
-            app:argType="string"
             android:defaultValue="0"
-            />
+            app:argType="string" />
 
 
     </fragment>
     <fragment
-        android:id="@+id/superHeroListFragment"
+        android:id="@+id/superheros_frsgment"
         android:name="edu.iesam.dam2024.features.superHero.presentation.SuperHeroListFragment"
-        android:label="SuperHeroListFragment" >
+        tools:layout="@layout/fragment_superhero_list">
         <action
             android:id="@+id/action_superHeroListFragment_to_superHeroDetailFragment"
-            app:popUpTo="@id/superHeroDetailFragment" />
+            app:destination="@id/superHeroDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/superHeroDetailFragment"
         android:name="edu.iesam.dam2024.features.superHero.presentation.SuperHeroDetailFragment"
-        android:label="SuperHeroDetailFragment" >
+        tools:layout="@layout/activity_superhero_detail">
         <action
             android:id="@+id/action_superHeroDetailFragment_to_superHeroListFragment"
-            app:popUpTo="@id/superHeroListFragment" />
+            app:destination="@id/superheros_frsgment" />
         <argument
-            android:name="idSuperHero"
-            app:argType="string"
+            android:name="idHero"
             android:defaultValue="0"
-            />
+            app:argType="string" />
     </fragment>
 
 

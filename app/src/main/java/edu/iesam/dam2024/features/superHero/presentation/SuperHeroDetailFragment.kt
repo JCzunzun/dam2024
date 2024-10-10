@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
+import edu.iesam.dam2024.app.loadUrl
 import edu.iesam.dam2024.databinding.FragmentSuperheroDetailBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
@@ -37,10 +38,14 @@ class SuperHeroDetailFragment : Fragment (){
         superHeroFactory = SuperHeroFactory(requireContext())
         viewModel = superHeroFactory.buildSuperHeroDetailViewMovie()
         setUpObeserver()
-        args.idSuperHero?.let {
+        args.idHero?.let {
             viewModel.viewCreated(it)
         }
 
+    }
+    private fun bindData(superHero : SuperHero){
+        binding.imageSuperhero.loadUrl(superHero.images)
+        binding.nameSuperhero.text = superHero.name
     }
     private fun  setUpObeserver(){
         val movieObserver= Observer<SuperHeroDetailViewModel.UiState>{ uiState ->
@@ -62,9 +67,7 @@ class SuperHeroDetailFragment : Fragment (){
         viewModel.uiState.observe(viewLifecycleOwner, movieObserver)
     }
 
-    private fun bindData(superHero : SuperHero){
 
-    }
     private fun showError(error: ErrorApp) {
         when (error) {
             ErrorApp.DataErrorApp -> TODO()
