@@ -13,7 +13,7 @@ import edu.iesam.dam2024.databinding.FragmentSuperheroDetailBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
 
-class SuperHeroDetailFragment : Fragment (){
+class SuperHeroDetailFragment : Fragment() {
 
     val args: SuperHeroDetailFragmentArgs by navArgs()
 
@@ -43,23 +43,34 @@ class SuperHeroDetailFragment : Fragment (){
         }
 
     }
-    private fun bindData(superHero : SuperHero){
-        binding.imageSuperhero.loadUrl(superHero.images)
-        binding.nameSuperhero.text = superHero.name
+
+    private fun bindData(superHero: SuperHero) {
+        binding.apply {
+            imageSuperhero.loadUrl(superHero.images)
+            nameSuperhero.text = superHero.name
+            statsSuperhero.text = superHero.powerstats.toString()
+            aliasSuperhero.text = superHero.slug
+            appereanceSuperhero.text = superHero.appearance.toString()
+            bioSuperhero.text = superHero.biography.toString()
+            trabajoSuperhero.text = superHero.work.toString()
+            connectSuperhero.text = superHero.connections.toString()
+        }
     }
-    private fun  setUpObeserver(){
-        val movieObserver= Observer<SuperHeroDetailViewModel.UiState>{ uiState ->
+
+    private fun setUpObeserver() {
+        val movieObserver = Observer<SuperHeroDetailViewModel.UiState> { uiState ->
             uiState.superHero?.let {
                 bindData(it)
             }
             uiState.errorApp?.let {
                 //pinto error
+            } ?: run {
+                //ocultar error
             }
-            if(uiState.isLoading){
+            if (uiState.isLoading) {
                 //muestro el cargando
                 Log.d("@dev", "Cargando ...")
-            }
-            else{
+            } else {
                 //oculto  el cargando
                 Log.d("@dev", "Cargando ...")
             }
@@ -79,6 +90,6 @@ class SuperHeroDetailFragment : Fragment (){
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding= null
+        _binding = null
     }
 }

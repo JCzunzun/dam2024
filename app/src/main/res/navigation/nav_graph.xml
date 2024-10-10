@@ -24,6 +24,7 @@
         <argument
             android:name="idMovie"
             android:defaultValue="0"
+            app:nullable="false"
             app:argType="string" />
 
 
@@ -46,6 +47,7 @@
         <argument
             android:name="idHero"
             android:defaultValue="0"
+            app:nullable="false"
             app:argType="string" />
     </fragment>
 

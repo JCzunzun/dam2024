@@ -63,20 +63,25 @@ class SuperHeroListFragment : Fragment() {
     }
 
     private fun bindData(superHeros: List<SuperHero>){
-        binding.superheroId1.text = superHeros[0].id
-        binding.superheroName1.text= superHeros[0].name
-        binding.layout1.setOnClickListener{
-            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment(idHero = superHeros[0].id))
+        binding.apply {
+            layout1.apply {
+
+                setOnClickListener{
+                    navigatetoDetail(superHeros[0].id)}
+            }
+            superheroId1.text=  superHeros[0].id
+            superheroName1.text = superHeros[0].name
         }
+
         binding.superheroId2.text = superHeros[1].id
         binding.superheroName2.text= superHeros[1].name
         binding.layout2.setOnClickListener{
-            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment(idHero = superHeros[1].id))
+            navigatetoDetail(superHeros[1].id)
         }
         binding.superheroId3.text = superHeros[2].id
         binding.superheroName3.text= superHeros[2].name
         binding.layout3.setOnClickListener{
-            findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment(idHero = superHeros[2].id))
+            navigatetoDetail(superHeros[2].id)
         }
 
     }
@@ -88,6 +93,10 @@ class SuperHeroListFragment : Fragment() {
             ErrorApp.ServerErrorApp -> TODO()
             ErrorApp.UnknowErrorApp -> TODO()
         }
+    }
+    private fun navigatetoDetail(superHeroID: String){
+        findNavController().navigate(SuperHeroListFragmentDirections.actionSuperHeroListFragmentToSuperHeroDetailFragment(idHero = superHeroID))
+
     }
 
     override fun onDestroy() {
