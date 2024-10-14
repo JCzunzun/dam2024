@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/superheros_frsgment">
+    app:startDestination="@id/pokemonFragment">
+
+    <!-- Movies-->
 
     <fragment
         android:id="@+id/movie_fragment"
@@ -27,6 +29,7 @@
             app:nullable="false"
             app:argType="string" />
 
+        <!--SuperHero-->
 
     </fragment>
     <fragment
@@ -49,6 +52,31 @@
             android:defaultValue="0"
             app:nullable="false"
             app:argType="string" />
+    </fragment>
+
+    <!-- Pokemon-->
+    <fragment
+        android:id="@+id/pokemonFragment"
+        android:name="edu.iesam.dam2024.features.pokemon.presentation.PokemonFragment"
+        android:label="PokemonFragment" >
+        <action
+            android:id="@+id/action_pokemon_fragment_to_pokemon_fragment_detail"
+            app:destination="@id/pokemonDetailFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonDetailFragment"
+        android:name="edu.iesam.dam2024.features.pokemon.presentation.PokemonDetailFragment"
+        tools:layout="@layout/fragment_pokemon_detail">
+        <argument
+            android:name="pokemonId"
+            android:defaultValue="0"
+            app:nullable="false"
+            app:argType="string"
+            />
+        <action
+            android:id="@+id/action_pokemonDetailFragment_to_pokemonFragment"
+            app:destination="@id/pokemonFragment" />
+
     </fragment>
 
 

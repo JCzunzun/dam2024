@@ -12,8 +12,7 @@ import kotlinx.coroutines.launch
 
 
 class MovieViewModel(
-    private val getMoviesUseCase: GetMoviesUseCase,
-    private val getMovieUseCase: GetMovieUseCase
+    private val getMoviesUseCase: GetMoviesUseCase
 ) : ViewModel() {
     private val _uiState = MutableLiveData<UiState>()
      val uiState : LiveData<UiState> = _uiState
@@ -24,9 +23,6 @@ class MovieViewModel(
             _uiState.postValue(UiState(movies= movies))
         }
 
-    }
-    fun itemSelected(movieid: String): Movie? {
-        return getMovieUseCase.invoke(movieid)
     }
     data class UiState(
         val isLoading :Boolean = false,

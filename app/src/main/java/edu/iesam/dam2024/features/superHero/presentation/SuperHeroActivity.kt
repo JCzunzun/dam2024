@@ -11,15 +11,10 @@ import edu.iesam.dam2024.features.superHero.domain.SuperHero
 
 
 class SuperHeroActivity : AppCompatActivity() {
-    private lateinit var xmlLocalDataSource: SuperHeroXmlLocalDataSource
-    private lateinit var superHeroFactory: SuperHeroFactory
-    private lateinit var viewModel: SuperHeroViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_superhero)
-
-
 
     }
 
