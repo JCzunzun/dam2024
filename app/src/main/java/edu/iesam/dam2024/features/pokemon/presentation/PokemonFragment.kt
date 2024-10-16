@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.iesam.dam2024.app.loadUrl
+import edu.iesam.dam2024.databinding.ActivityPokemonsBinding
 import edu.iesam.dam2024.databinding.FragmentPokemonsBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
@@ -19,9 +20,10 @@ import edu.iesam.dam2024.features.pokemon.presentation.adapter.PokemonAdapter
 class PokemonFragment:Fragment() {
     private lateinit var pokemonFactory: PokemonFactory
     private lateinit var viewModel: PokemonViewModel
-    private lateinit var adapter: PokemonAdapter
+
 
     private var _binding: FragmentPokemonsBinding? = null
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -30,6 +32,7 @@ class PokemonFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPokemonsBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -43,22 +46,7 @@ class PokemonFragment:Fragment() {
 
     }
 
-    private fun setupView() {
-        binding.apply {
-            list.apply {
-                layoutManager = GridLayoutManager(
-                    context,
-                    1,
-                    LinearLayoutManager.VERTICAL,
-                    false
-                )
-                adapter.setEvent { pokemonId ->
-                    nacigationDetail(pokemonId)
-                }
-                adapter = this@PokemonFragment.adapter
-            }
-        }
-    }
+
 
     private fun setupObserver() {
         val observer = Observer<PokemonViewModel.UiState> { uiState ->
