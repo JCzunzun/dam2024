@@ -20,10 +20,10 @@ import edu.iesam.dam2024.features.pokemon.presentation.adapter.PokemonAdapter
 class PokemonFragment:Fragment() {
     private lateinit var pokemonFactory: PokemonFactory
     private lateinit var viewModel: PokemonViewModel
-
+    private  val adapter= PokemonAdapter ()
 
     private var _binding: FragmentPokemonsBinding? = null
-
+    private var mainBinding : ActivityPokemonsBinding ? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,7 +32,7 @@ class PokemonFragment:Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentPokemonsBinding.inflate(inflater, container, false)
-
+        setupView()
         return binding.root
     }
 
@@ -46,12 +46,26 @@ class PokemonFragment:Fragment() {
 
     }
 
-
+    private fun setupView() {
+        mainBinding?.apply {
+            navHostItemPokemon?.apply {
+                layoutManager = GridLayoutManager(
+                    context,
+                    1,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+                navHostItemPokemon.adapter = adapter
+                adapter = this@PokemonFragment.adapter
+            }
+        }
+    }
 
     private fun setupObserver() {
         val observer = Observer<PokemonViewModel.UiState> { uiState ->
             uiState.pokemons?.let {
                 //bindData(it)
+                adapter.submitList(it)
             }
             uiState.errorApp?.let {
                 //pintar error
