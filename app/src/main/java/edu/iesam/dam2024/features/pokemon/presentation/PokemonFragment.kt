@@ -8,14 +8,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import edu.iesam.dam2024.app.loadUrl
 import edu.iesam.dam2024.databinding.FragmentPokemonsBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
+import edu.iesam.dam2024.features.pokemon.presentation.adapter.PokemonAdapter
 
 class PokemonFragment:Fragment() {
     private lateinit var pokemonFactory: PokemonFactory
     private lateinit var viewModel: PokemonViewModel
+    private lateinit var adapter: PokemonAdapter
 
     private var _binding: FragmentPokemonsBinding? = null
     private val binding get() = _binding!!
@@ -36,12 +40,30 @@ class PokemonFragment:Fragment() {
         viewModel.viewCreated()
         setupObserver()
 
+
+    }
+
+    private fun setupView() {
+        binding.apply {
+            list.apply {
+                layoutManager = GridLayoutManager(
+                    context,
+                    1,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+                adapter.setEvent { pokemonId ->
+                    nacigationDetail(pokemonId)
+                }
+                adapter = this@PokemonFragment.adapter
+            }
+        }
     }
 
     private fun setupObserver() {
         val observer = Observer<PokemonViewModel.UiState> { uiState ->
             uiState.pokemons?.let {
-                bindData(it)
+                //bindData(it)
             }
             uiState.errorApp?.let {
                 //pintar error
@@ -57,49 +79,50 @@ class PokemonFragment:Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner, observer)
     }
 
-    private fun bindData(pokemons: List<Pokemon>) {
-        binding.apply {
-            layoutPokemon1.apply {
-                setOnClickListener {
-                    nacigationDetail(pokemons[0].id)
+    /*
+        private fun bindData(pokemons: List<Pokemon>) {
+            binding.apply {
+                layoutPokemon1.apply {
+                    setOnClickListener {
+                        nacigationDetail(pokemons[0].id)
+                    }
                 }
+                pokemonId.text = pokemons[0].id
+                pokemonsName.text = pokemons[0].name
+                pokemonImage.loadUrl(pokemons[0].image)
             }
-            pokemonId.text = pokemons[0].id
-            pokemonsName.text = pokemons[0].name
-            pokemonImage.loadUrl(pokemons[0].image)
-        }
-        binding.apply {
-            layoutPokemon2.apply {
-                setOnClickListener {
-                    nacigationDetail(pokemons[1].id)
+            binding.apply {
+                layoutPokemon2.apply {
+                    setOnClickListener {
+                        nacigationDetail(pokemons[1].id)
+                    }
                 }
+                pokemonId2.text = pokemons[1].id
+                pokemonsName2.text = pokemons[1].name
+                pokemonImage2.loadUrl(pokemons[1].image)
             }
-            pokemonId2.text = pokemons[1].id
-            pokemonsName2.text = pokemons[1].name
-            pokemonImage2.loadUrl(pokemons[1].image)
-        }
-        binding.apply {
-            layoutPokemon3.apply {
-                setOnClickListener {
-                    nacigationDetail(pokemons[2].id)
+            binding.apply {
+                layoutPokemon3.apply {
+                    setOnClickListener {
+                        nacigationDetail(pokemons[2].id)
+                    }
                 }
+                pokemonId3.text = pokemons[2].id
+                pokemonsName3.text = pokemons[2].name
+                pokemonImage3.loadUrl(pokemons[2].image)
             }
-            pokemonId3.text = pokemons[2].id
-            pokemonsName3.text = pokemons[2].name
-            pokemonImage3.loadUrl(pokemons[2].image)
-        }
-        binding.apply {
-            layoutPokemon4.apply {
-                setOnClickListener {
-                    nacigationDetail(pokemons[3].id)
+            binding.apply {
+                layoutPokemon4.apply {
+                    setOnClickListener {
+                        nacigationDetail(pokemons[3].id)
+                    }
                 }
+                pokemonId4.text = pokemons[3].id
+                pokemonsName4.text = pokemons[3].name
+                pokemonImage4.loadUrl(pokemons[3].image)
             }
-            pokemonId4.text = pokemons[3].id
-            pokemonsName4.text = pokemons[3].name
-            pokemonImage4.loadUrl(pokemons[3].image)
         }
-    }
-
+    */
     private fun nacigationDetail(pokemonId:String){
         findNavController().navigate(PokemonFragmentDirections.actionPokemonFragmentToPokemonFragmentDetail(pokemonId = pokemonId))
     }
