@@ -10,11 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import edu.iesam.dam2024.app.loadUrl
-import edu.iesam.dam2024.databinding.ActivityPokemonsBinding
 import edu.iesam.dam2024.databinding.FragmentPokemonsBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
-import edu.iesam.dam2024.features.pokemon.domain.Pokemon
 import edu.iesam.dam2024.features.pokemon.presentation.adapter.PokemonAdapter
 
 class PokemonFragment:Fragment() {
@@ -23,7 +20,7 @@ class PokemonFragment:Fragment() {
     private  val adapter= PokemonAdapter ()
 
     private var _binding: FragmentPokemonsBinding? = null
-    private var mainBinding : ActivityPokemonsBinding ? = null
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -47,15 +44,15 @@ class PokemonFragment:Fragment() {
     }
 
     private fun setupView() {
-        mainBinding?.apply {
-            navHostItemPokemon?.apply {
+        binding?.apply {
+            rvPokemon?.apply {
                 layoutManager = GridLayoutManager(
                     context,
                     1,
                     LinearLayoutManager.VERTICAL,
                     false
                 )
-                navHostItemPokemon.adapter = adapter
+                adapter.set //aqui no deja
                 adapter = this@PokemonFragment.adapter
             }
         }

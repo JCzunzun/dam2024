@@ -7,23 +7,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".features.pokemon.presentation.PokemonActivity">
 
-    <!--<androidx.fragment.app.FragmentContainerView
+    <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/nav_host_fragment_pokemon"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/nav_graph"
-        /> -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nav_host_item_pokemon"
-        android:clickable="true"
-        android:scrollbars="vertical"
-        tools:listitem="@layout/item_pokemons"
-        android:layout_marginTop="10dp">
+        />
 
-    </androidx.recyclerview.widget.RecyclerView>
 
 
 </LinearLayout>
