@@ -74,9 +74,7 @@ class PokemonDetailFragment : Fragment(){
             pokemonPoder2.text = pokemon.poderes.poder2
             pokemonPoder3.text = pokemon.poderes.poder3
             pokemonPoder4.text = pokemon.poderes.poder4
-            returnButton.setOnClickListener() {
-                findNavController().navigate(PokemonDetailFragmentDirections.actionPokemonDetailFragmentToPokemonFragment())
-            }
+
         }
     }
     private fun showError(error: ErrorApp) {

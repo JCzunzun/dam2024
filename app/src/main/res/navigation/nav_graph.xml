@@ -20,9 +20,6 @@
         android:id="@+id/movie_detail_fragment"
         android:name="edu.iesam.dam2024.features.movies.presentation.MovieDetailFragment"
         tools:layout="@layout/fragment_movie_detail">
-        <action
-            android:id="@+id/action_movie_detail_fragment_to_movie_fragment"
-            app:destination="@id/movie_fragment" />
         <argument
             android:name="idMovie"
             android:defaultValue="0"
@@ -44,9 +41,6 @@
         android:id="@+id/superHeroDetailFragment"
         android:name="edu.iesam.dam2024.features.superHero.presentation.SuperHeroDetailFragment"
         tools:layout="@layout/activity_superhero_detail">
-        <action
-            android:id="@+id/action_superHeroDetailFragment_to_superHeroListFragment"
-            app:destination="@id/superheros_frsgment" />
         <argument
             android:name="idHero"
             android:defaultValue="0"
@@ -73,9 +67,6 @@
             app:nullable="false"
             app:argType="string"
             />
-        <action
-            android:id="@+id/action_pokemonDetailFragment_to_pokemonFragment"
-            app:destination="@id/pokemonFragment" />
 
     </fragment>
 

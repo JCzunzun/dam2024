@@ -17,7 +17,7 @@ import edu.iesam.dam2024.features.pokemon.presentation.adapter.PokemonAdapter
 class PokemonFragment:Fragment() {
     private lateinit var pokemonFactory: PokemonFactory
     private lateinit var viewModel: PokemonViewModel
-    private  val adapter= PokemonAdapter ()
+    private  val pokemonAdapter= PokemonAdapter ()
 
     private var _binding: FragmentPokemonsBinding? = null
 
@@ -52,8 +52,10 @@ class PokemonFragment:Fragment() {
                     LinearLayoutManager.VERTICAL,
                     false
                 )
-                adapter.set //aqui no deja
-                adapter = this@PokemonFragment.adapter
+                pokemonAdapter.setEvent { pokemonId ->
+                    nacigationDetail(pokemonId)
+                } //aqui no deja
+                adapter = pokemonAdapter
             }
         }
     }
@@ -62,7 +64,7 @@ class PokemonFragment:Fragment() {
         val observer = Observer<PokemonViewModel.UiState> { uiState ->
             uiState.pokemons?.let {
                 //bindData(it)
-                adapter.submitList(it)
+                pokemonAdapter.submitList(it)
             }
             uiState.errorApp?.let {
                 //pintar error
