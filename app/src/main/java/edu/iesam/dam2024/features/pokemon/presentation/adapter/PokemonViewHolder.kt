@@ -12,7 +12,9 @@ class PokemonViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(pokemon: Pokemon, onClick: (pokemonid: String) -> Unit) {
         itemPokemon.apply {
-            pokemonImageItem.loadUrl(pokemon.image)
+            pokemon.image?.let {
+                pokemonImageItem.loadUrl(it)
+            }
             pokemonNameItem.text = pokemon.name
             view.setOnClickListener {
                 onClick(pokemon.id)

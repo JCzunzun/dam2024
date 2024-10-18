@@ -54,7 +54,7 @@ class PokemonFragment:Fragment() {
                 )
                 pokemonAdapter.setEvent { pokemonId ->
                     nacigationDetail(pokemonId)
-                } //aqui no deja
+                }
                 adapter = pokemonAdapter
             }
         }
