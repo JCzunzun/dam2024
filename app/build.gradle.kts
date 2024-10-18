@@ -49,6 +49,11 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.glide)
 
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.coroutines.core)
+    implementation(libs.coroutines.android)
+
     api(libs.nav.fragment.ktx)
 
     implementation("androidx.navigation:navigation-fragment:2.8.2")
