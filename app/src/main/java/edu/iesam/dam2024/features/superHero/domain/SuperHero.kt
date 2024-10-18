@@ -9,7 +9,7 @@ data class SuperHero(
     val biography: Biography,
     val work: Work,
     val connections: Connections,
-    val images: String
+    val images: Images
 )
 
 data class PowerStats(
@@ -69,3 +69,10 @@ data class Connections(
         return "Grupo de afiliacion='$groupAffiliation'\nrelatives='$relatives'"
     }
 }
+
+data class Images(
+    val xs: String,
+    val sm: String,
+    val md: String,
+    val lg: String
+)

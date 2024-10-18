@@ -5,7 +5,7 @@ import edu.iesam.dam2024.features.pokemon.domain.Pokemon
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import edu.iesam.dam2024.app.API.RetrofitInstance
+import edu.iesam.dam2024.app.data.API.RetrofitInstance
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback

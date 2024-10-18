@@ -1,4 +1,4 @@
-package edu.iesam.dam2024.app.API
+package edu.iesam.dam2024.features.pokemon.data.remote
 
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
 import retrofit2.http.GET
@@ -6,7 +6,7 @@ import retrofit2.http.Path
 import retrofit2.Call
 
 
-interface ApiService {
+interface PokemonService {
 
 
     @GET("pokemon")

@@ -6,64 +6,14 @@
     android:orientation="vertical"
     tools:context=".features.superHero.presentation.SuperHeroActivity">
 
-    <LinearLayout
-        android:id="@+id/layout_1"
-        android:layout_margin="16dp"
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_superhero"
+        android:clickable="true"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_superhero">
 
-        <TextView
-            android:id="@+id/superhero_id_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/superhero_name_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/layout_2"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/superhero_id_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/superhero_name_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/layout_3"
-        android:layout_margin="16dp"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/superhero_id_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/superhero_name_3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp" />
-    </LinearLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

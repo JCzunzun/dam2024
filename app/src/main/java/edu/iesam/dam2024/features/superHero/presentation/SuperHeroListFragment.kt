@@ -9,12 +9,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import edu.iesam.dam2024.databinding.FragmentSuperheroListBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
+import edu.iesam.dam2024.features.superHero.presentation.adapter.SuperHeroAdapter
 
 class SuperHeroListFragment : Fragment() {
 
+    private val superHeroAdapter = SuperHeroAdapter()
 
 
     private var _binding: FragmentSuperheroListBinding?= null
@@ -29,6 +32,7 @@ class SuperHeroListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding= FragmentSuperheroListBinding.inflate(inflater, container, false)
+        setupView()
         return binding.root
     }
 
@@ -36,16 +40,32 @@ class SuperHeroListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         superHeroFactory = SuperHeroFactory(requireContext())
         viewModel = superHeroFactory.buildViewModel()
-        setupObserver()
-
         viewModel.loadSuperHeros()
+        setupObserver()
+    }
+
+    private fun setupView() {
+        binding?.apply {
+            rvSuperhero?.apply {
+                layoutManager = LinearLayoutManager(
+                    context,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+                superHeroAdapter.setEvent { superHeroId ->
+                    navigatetoDetail(superHeroId)
+                }
+                adapter = superHeroAdapter
+            }
+        }
+
     }
 
     private fun setupObserver(){
         val observer = Observer <SuperHeroViewModel.UiState>{
                 uiState ->
             uiState.superHeros?.let {
-                bindData(it)
+                superHeroAdapter.submitList(it)
             }
             uiState.errorApp?.let {
                 //pinto error
@@ -62,29 +82,6 @@ class SuperHeroListFragment : Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner, observer)
     }
 
-    private fun bindData(superHeros: List<SuperHero>){
-        binding.apply {
-            layout1.apply {
-
-                setOnClickListener{
-                    navigatetoDetail(superHeros[0].id)}
-            }
-            superheroId1.text=  superHeros[0].id
-            superheroName1.text = superHeros[0].name
-        }
-
-        binding.superheroId2.text = superHeros[1].id
-        binding.superheroName2.text= superHeros[1].name
-        binding.layout2.setOnClickListener{
-            navigatetoDetail(superHeros[1].id)
-        }
-        binding.superheroId3.text = superHeros[2].id
-        binding.superheroName3.text= superHeros[2].name
-        binding.layout3.setOnClickListener{
-            navigatetoDetail(superHeros[2].id)
-        }
-
-    }
 
     private fun showError(error: ErrorApp) {
         when (error) {

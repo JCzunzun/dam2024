@@ -46,7 +46,7 @@ class SuperHeroDetailFragment : Fragment() {
 
     private fun bindData(superHero: SuperHero) {
         binding.apply {
-            imageSuperhero.loadUrl(superHero.images)
+            imageSuperhero.loadUrl(superHero.images.lg)
             nameSuperhero.text = superHero.name
             statsSuperhero.text = superHero.powerstats.toString()
             aliasSuperhero.text = superHero.slug

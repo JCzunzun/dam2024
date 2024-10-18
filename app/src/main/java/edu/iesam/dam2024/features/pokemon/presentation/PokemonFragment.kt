@@ -54,7 +54,7 @@ class PokemonFragment:Fragment() {
                 )
                 pokemonAdapter.setEvent { pokemonId ->
                     nacigationDetail(pokemonId)
-                } //aqui no deja
+                }
                 adapter = pokemonAdapter
             }
         }
@@ -80,50 +80,6 @@ class PokemonFragment:Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner, observer)
     }
 
-    /*
-        private fun bindData(pokemons: List<Pokemon>) {
-            binding.apply {
-                layoutPokemon1.apply {
-                    setOnClickListener {
-                        nacigationDetail(pokemons[0].id)
-                    }
-                }
-                pokemonId.text = pokemons[0].id
-                pokemonsName.text = pokemons[0].name
-                pokemonImage.loadUrl(pokemons[0].image)
-            }
-            binding.apply {
-                layoutPokemon2.apply {
-                    setOnClickListener {
-                        nacigationDetail(pokemons[1].id)
-                    }
-                }
-                pokemonId2.text = pokemons[1].id
-                pokemonsName2.text = pokemons[1].name
-                pokemonImage2.loadUrl(pokemons[1].image)
-            }
-            binding.apply {
-                layoutPokemon3.apply {
-                    setOnClickListener {
-                        nacigationDetail(pokemons[2].id)
-                    }
-                }
-                pokemonId3.text = pokemons[2].id
-                pokemonsName3.text = pokemons[2].name
-                pokemonImage3.loadUrl(pokemons[2].image)
-            }
-            binding.apply {
-                layoutPokemon4.apply {
-                    setOnClickListener {
-                        nacigationDetail(pokemons[3].id)
-                    }
-                }
-                pokemonId4.text = pokemons[3].id
-                pokemonsName4.text = pokemons[3].name
-                pokemonImage4.loadUrl(pokemons[3].image)
-            }
-        }
-    */
     private fun nacigationDetail(pokemonId:String){
         findNavController().navigate(PokemonFragmentDirections.actionPokemonFragmentToPokemonFragmentDetail(pokemonId = pokemonId))
     }
