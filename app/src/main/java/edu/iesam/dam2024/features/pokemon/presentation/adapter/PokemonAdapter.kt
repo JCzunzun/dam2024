@@ -10,15 +10,6 @@ import edu.iesam.dam2024.features.pokemon.presentation.PokemonDiffUtil
 
 class PokemonAdapter : ListAdapter<Pokemon, PokemonViewHolder>(PokemonDiffUtil()) {
 
-    private val dataList : MutableList<Pokemon> = mutableListOf()
-
-
-    fun setDataList(pokemons: List<Pokemon>){
-        dataList.clear()
-        dataList.addAll(pokemons)
-        notifyDataSetChanged()
-
-    }
     lateinit var onClick: (pokemonid: String) -> Unit
 
     fun setEvent(onClick: (pokemonid: String) -> Unit) {

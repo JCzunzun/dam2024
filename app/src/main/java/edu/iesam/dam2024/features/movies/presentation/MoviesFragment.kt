@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import edu.iesam.dam2024.databinding.FragmentMoviesBinding
 import edu.iesam.dam2024.features.movies.domain.Movie
+import edu.iesam.dam2024.features.movies.presentation.adapter.MovieAdapter
 
 class MoviesFragment : Fragment() {
+
+    private val movieAdapter = MovieAdapter()
 
     private lateinit var movieFactory: MovieFactory
     private lateinit var viewModel: MovieViewModel
@@ -25,7 +29,7 @@ class MoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
-
+        setUpView()
         return binding.root
     }
 
@@ -37,10 +41,26 @@ class MoviesFragment : Fragment() {
         setUpObeserver()
     }
 
+    private fun setUpView(){
+        binding?.apply {
+            rvMovie?.apply {
+                layoutManager = LinearLayoutManager(
+                    context,
+                    LinearLayoutManager.VERTICAL,
+                    false
+                )
+                movieAdapter.setEvent { movieId ->
+                    navigateToDetail(movieId)
+                }
+                adapter = movieAdapter
+            }
+        }
+    }
+
     private fun  setUpObeserver(){
         val movieObserver= Observer<MovieViewModel.UiState>{uiState ->
             uiState.movies?.let {
-                bindData(it)
+                movieAdapter.submitList(it)
             }
             uiState.errorApp?.let {
                 //pinto error
@@ -57,27 +77,6 @@ class MoviesFragment : Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner, movieObserver)
     }
 
-    private fun bindData(movies: List<Movie>) {
-        binding.movieId1.text = movies[0].id
-        binding.movieTittle1.text = movies[0].title
-        binding.movieTittle1.setOnClickListener {
-            findNavController().navigate(MoviesFragmentDirections.actionMovieFragmentToMovieDetailFragment2(idMovie = movies[0].id))
-
-        }
-        binding.movieId2.text = movies[1].id
-        binding.movieTittle2.text = movies[1].title
-        binding.movieTittle2.setOnClickListener {
-            findNavController().navigate(MoviesFragmentDirections.actionMovieFragmentToMovieDetailFragment2(idMovie = movies[1].id))
-
-        }
-
-        binding.movieId3.text = movies[2].id
-        binding.movieTittle3.text = movies[2].title
-        binding.movieTittle3.setOnClickListener {
-            findNavController().navigate(MoviesFragmentDirections.actionMovieFragmentToMovieDetailFragment2(idMovie = movies[2].id))
-        }
-
-    }
 
 
     private fun showError(error: ErrorApp) {
@@ -87,6 +86,10 @@ class MoviesFragment : Fragment() {
             ErrorApp.ServerErrorApp -> TODO()
             ErrorApp.UnknowErrorApp -> TODO()
         }
+    }
+
+    private fun navigateToDetail(movieID : String){
+        findNavController().navigate(MoviesFragmentDirections.actionMovieFragmentToMovieDetailFragment2(idMovie = movieID))
     }
 
     override fun onDestroy() {

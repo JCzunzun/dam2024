@@ -3,18 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/superheros_frsgment">
+    app:startDestination="@id/rv_superhero">
 
     <!-- Movies-->
 
     <fragment
-        android:id="@+id/movie_fragment"
+        android:id="@+id/rv_movie"
         android:name="edu.iesam.dam2024.features.movies.presentation.MoviesFragment"
         tools:layout="@layout/fragment_movies">
 
         <action
             android:id="@+id/action_movie_fragment_to_movie_detail_fragment2"
             app:destination="@id/movie_detail_fragment" />
+
     </fragment>
     <fragment
         android:id="@+id/movie_detail_fragment"
@@ -23,19 +24,20 @@
         <argument
             android:name="idMovie"
             android:defaultValue="0"
-            app:nullable="false"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="false" />
 
         <!--SuperHero-->
 
     </fragment>
     <fragment
-        android:id="@+id/superheros_frsgment"
+        android:id="@+id/rv_superhero"
         android:name="edu.iesam.dam2024.features.superHero.presentation.SuperHeroListFragment"
         tools:layout="@layout/fragment_superhero_list">
         <action
             android:id="@+id/action_superHeroListFragment_to_superHeroDetailFragment"
             app:destination="@id/superHeroDetailFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/superHeroDetailFragment"
@@ -44,18 +46,18 @@
         <argument
             android:name="idHero"
             android:defaultValue="0"
-            app:nullable="false"
-            app:argType="string" />
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
 
     <!-- Pokemon-->
     <fragment
-        android:id="@+id/pokemonFragment"
+        android:id="@+id/rv_pokemon"
         android:name="edu.iesam.dam2024.features.pokemon.presentation.PokemonFragment"
-        android:label="PokemonFragment" >
+        android:label="PokemonFragment">
         <action
             android:id="@+id/action_pokemon_fragment_to_pokemon_fragment_detail"
-            app:destination="@id/pokemonDetailFragment"/>
+            app:destination="@id/pokemonDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/pokemonDetailFragment"
@@ -64,9 +66,8 @@
         <argument
             android:name="pokemonId"
             android:defaultValue="0"
-            app:nullable="false"
             app:argType="string"
-            />
+            app:nullable="false" />
 
     </fragment>
 

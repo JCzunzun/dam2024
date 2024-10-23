@@ -10,12 +10,13 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import edu.iesam.dam2024.R
 import edu.iesam.dam2024.databinding.FragmentSuperheroListBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
 import edu.iesam.dam2024.features.superHero.presentation.adapter.SuperHeroAdapter
 
-class SuperHeroListFragment : Fragment() {
+class SuperHeroListFragment : Fragment(R.layout.fragment_superhero_list) {
 
     private val superHeroAdapter = SuperHeroAdapter()
 

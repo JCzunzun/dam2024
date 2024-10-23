@@ -56,8 +56,11 @@ dependencies {
 
     api(libs.nav.fragment.ktx)
 
-    implementation("androidx.navigation:navigation-fragment:2.8.2")
-    implementation("androidx.navigation:navigation-ui:2.8.2")
+    //navigation
+
+    val nav_version = "2.8.0"
+    implementation("androidx.navigation:navigation-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-ui:$nav_version")
 
     implementation(libs.gson.serializer)
     implementation(libs.androidx.navigation.ui.ktx)

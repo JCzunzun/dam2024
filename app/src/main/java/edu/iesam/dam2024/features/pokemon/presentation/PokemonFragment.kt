@@ -53,7 +53,7 @@ class PokemonFragment:Fragment() {
                     false
                 )
                 pokemonAdapter.setEvent { pokemonId ->
-                    nacigationDetail(pokemonId)
+                    navigateToDetail(pokemonId)
                 }
                 adapter = pokemonAdapter
             }
@@ -80,7 +80,7 @@ class PokemonFragment:Fragment() {
         viewModel.uiState.observe(viewLifecycleOwner, observer)
     }
 
-    private fun nacigationDetail(pokemonId:String){
+    private fun navigateToDetail(pokemonId:String){
         findNavController().navigate(PokemonFragmentDirections.actionPokemonFragmentToPokemonFragmentDetail(pokemonId = pokemonId))
     }
 

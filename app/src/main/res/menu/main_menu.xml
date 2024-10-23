@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/rv_superhero"
+        android:title="@string/rv_superhero"
+        android:icon="@drawable/icon_super"/>
+    <item
+        android:id="@+id/rv_pokemon"
+        android:title="@string/rv_pokemon"
+        android:icon="@drawable/icon_pokemon"/>
+    <item
+        android:id="@+id/rv_movie"
+        android:title="@string/rv_movie"
+        android:icon="@drawable/icon_movie"/>
+
+</menu>
