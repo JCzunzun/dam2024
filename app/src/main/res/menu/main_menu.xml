@@ -4,14 +4,17 @@
     <item
         android:id="@+id/rv_superhero"
         android:title="@string/rv_superhero"
-        android:icon="@drawable/icon_super"/>
+        android:icon="@drawable/icon_super"
+        android:enabled="true"/>
     <item
         android:id="@+id/rv_pokemon"
         android:title="@string/rv_pokemon"
-        android:icon="@drawable/icon_pokemon"/>
+        android:icon="@drawable/icon_pokemon"
+        android:enabled="true"/>
     <item
         android:id="@+id/rv_movie"
         android:title="@string/rv_movie"
-        android:icon="@drawable/icon_movie"/>
+        android:icon="@drawable/icon_movie"
+        android:enabled="true"/>
 
 </menu>

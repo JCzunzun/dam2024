@@ -3,6 +3,6 @@
     <string name="name_file_xml">movies</string>
 
     <string name="rv_superhero">Super Hero</string>
-    <string name="rv_pokemon">Super Hero</string>
-    <string name="rv_movie">Super Hero</string>
+    <string name="rv_pokemon">Pokemon</string>
+    <string name="rv_movie">Movie</string>
 </resources>

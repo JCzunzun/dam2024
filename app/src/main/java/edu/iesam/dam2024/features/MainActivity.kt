@@ -1,4 +1,4 @@
-package edu.iesam.dam2024.features.superHero.presentation
+package edu.iesam.dam2024.features
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import edu.iesam.dam2024.R
 
 
-class SuperHeroActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
