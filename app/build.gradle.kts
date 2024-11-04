@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.navigation.safeargs.kotlin)
+    alias(libs.plugins.ksp)
 }
 
 android {
@@ -65,8 +66,18 @@ dependencies {
     implementation(libs.gson.serializer)
     implementation(libs.androidx.navigation.ui.ktx)
 
+    implementation(libs.koin.android)
+    implementation(libs.koin.annotations)
+    implementation(libs.koin.bom)
+    ksp(libs.koin.ksp)
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+ksp{
+    arg("koin.options.java8Fallback", "true")
+
 }
