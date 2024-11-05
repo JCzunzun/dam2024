@@ -1,4 +1,4 @@
-package edu.iesam.dam2024.features.movies.presentation
+package edu.iesam.dam2024.features.movies.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import edu.iesam.dam2024.features.movies.domain.Movie

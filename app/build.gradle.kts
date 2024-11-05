@@ -54,7 +54,7 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.coroutines.core)
     implementation(libs.coroutines.android)
-
+    implementation(libs.loggin.interceptor)
     api(libs.nav.fragment.ktx)
 
     //navigation

@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.movies.domain.Movie
-import edu.iesam.dam2024.features.movies.presentation.MovieDiffUtil
 
 class MovieAdapter : ListAdapter<Movie, MovieViewHolder>(MovieDiffUtil()){
 

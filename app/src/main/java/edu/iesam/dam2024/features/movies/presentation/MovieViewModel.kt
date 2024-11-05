@@ -9,8 +9,9 @@ import edu.iesam.dam2024.features.movies.domain.GetMoviesUseCase
 import edu.iesam.dam2024.features.movies.domain.Movie
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.annotation.KoinViewModel
 
-
+@KoinViewModel
 class MovieViewModel(
     private val getMoviesUseCase: GetMoviesUseCase
 ) : ViewModel() {

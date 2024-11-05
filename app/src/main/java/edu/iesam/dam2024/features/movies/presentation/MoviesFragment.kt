@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import edu.iesam.dam2024.databinding.FragmentMoviesBinding
-import edu.iesam.dam2024.features.movies.domain.Movie
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import edu.iesam.dam2024.features.movies.presentation.adapter.MovieAdapter
 
 class MoviesFragment : Fragment() {
@@ -18,7 +18,7 @@ class MoviesFragment : Fragment() {
     private val movieAdapter = MovieAdapter()
 
     private lateinit var movieFactory: MovieFactory
-    private lateinit var viewModel: MovieViewModel
+    val moviesViewModel: MovieViewModel by viewModel()
 
     private var _binding: FragmentMoviesBinding ? = null
     private  val binding get() = _binding!!
@@ -36,8 +36,7 @@ class MoviesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         movieFactory = MovieFactory(requireContext())
-        viewModel= movieFactory.buildViewModel()
-        viewModel.viewCreated()
+        moviesViewModel.viewCreated()
         setUpObeserver()
     }
 
@@ -74,7 +73,7 @@ class MoviesFragment : Fragment() {
                 Log.d("@dev", "Cargando ...")
             }
         }
-        viewModel.uiState.observe(viewLifecycleOwner, movieObserver)
+        moviesViewModel.uiState.observe(viewLifecycleOwner, movieObserver)
     }
 
 
