@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "edu.iesam.dam2024"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "edu.iesam.dam2024"
@@ -68,7 +68,7 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.koin.annotations)
-    implementation(libs.koin.bom)
+    implementation(project.dependencies.platform(libs.koin.bom))
     ksp(libs.koin.ksp)
 
 
@@ -78,6 +78,6 @@ dependencies {
 }
 
 ksp{
-    arg("koin.options.java8Fallback", "true")
+    arg("KOIN_CONFIG_CHECK", "true")
 
 }
