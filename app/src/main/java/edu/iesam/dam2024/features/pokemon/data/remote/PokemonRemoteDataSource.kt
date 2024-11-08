@@ -7,10 +7,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import edu.iesam.dam2024.app.data.API.RetrofitInstance
 import kotlinx.coroutines.launch
+import org.koin.core.annotation.Single
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+@Single
 class PokemonRemoteDataSource : ViewModel(){
 
     val pokemonList : MutableLiveData<List<Pokemon>> = MutableLiveData()

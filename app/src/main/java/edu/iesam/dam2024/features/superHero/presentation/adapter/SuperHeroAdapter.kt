@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
-import edu.iesam.dam2024.features.superHero.presentation.SuperHeroDiffUtil
 
 class SuperHeroAdapter : ListAdapter<SuperHero, SuperHeroViewHolder>(SuperHeroDiffUtil()) {
     lateinit var onClick: (superHeroId: String) -> Unit

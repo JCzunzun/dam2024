@@ -1,4 +1,4 @@
-package edu.iesam.dam2024.features.superHero.presentation
+package edu.iesam.dam2024.features.superHero.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import edu.iesam.dam2024.features.superHero.domain.SuperHero

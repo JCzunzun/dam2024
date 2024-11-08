@@ -5,7 +5,6 @@ import edu.iesam.dam2024.app.data.API.ApiClient
 import edu.iesam.dam2024.features.superHero.data.SuperHeroDataRepository
 import edu.iesam.dam2024.features.superHero.data.local.SuperHeroXmlLocalDataSource
 import edu.iesam.dam2024.features.superHero.data.remote.SuperHeroApiRemoteDataSource
-import edu.iesam.dam2024.features.superHero.data.remote.SuperHeroMockRemoteDataSource
 import edu.iesam.dam2024.features.superHero.domain.GetSuperHeroUseCase
 import edu.iesam.dam2024.features.superHero.domain.GetSuperHerosUseCase
 

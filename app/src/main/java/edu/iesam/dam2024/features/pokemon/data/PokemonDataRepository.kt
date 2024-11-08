@@ -4,7 +4,9 @@ import edu.iesam.dam2024.features.pokemon.data.local.PokemonXmlLocalDataSource
 import edu.iesam.dam2024.features.pokemon.data.remote.PokemonMockRemoteDataSource
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
 import edu.iesam.dam2024.features.pokemon.domain.PokemonRepository
+import org.koin.core.annotation.Single
 
+@Single
 class PokemonDataRepository (
     private val local:PokemonXmlLocalDataSource,
     private val mockRemoteDataSource: PokemonMockRemoteDataSource

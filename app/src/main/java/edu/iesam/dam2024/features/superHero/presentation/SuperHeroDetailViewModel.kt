@@ -9,7 +9,9 @@ import edu.iesam.dam2024.features.superHero.domain.GetSuperHeroUseCase
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class SuperHeroDetailViewModel(
     private val getSuperHeroUseCase: GetSuperHeroUseCase
 ) : ViewModel() {

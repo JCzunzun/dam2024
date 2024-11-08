@@ -1,4 +1,4 @@
-package edu.iesam.dam2024.features.pokemon.presentation
+package edu.iesam.dam2024.features.pokemon.presentation.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon

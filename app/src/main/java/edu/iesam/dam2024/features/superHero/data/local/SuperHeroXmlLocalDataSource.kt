@@ -5,9 +5,11 @@ import android.content.Context
 import com.google.gson.Gson
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
+import org.koin.core.annotation.Single
 
+@Single
 class SuperHeroXmlLocalDataSource(context: Context) {
-    /* private val sharedPref = context.getSharedPreferences(
+    private val sharedPref = context.getSharedPreferences(
          context.getString(R.string.name_file_xml), Context.MODE_PRIVATE
      )
      private val gson = Gson()
@@ -50,5 +52,5 @@ class SuperHeroXmlLocalDataSource(context: Context) {
 
      fun deleteById(superHeroId: String) {
          sharedPref.edit().remove(superHeroId).apply()
-     }*/
+     }
 }

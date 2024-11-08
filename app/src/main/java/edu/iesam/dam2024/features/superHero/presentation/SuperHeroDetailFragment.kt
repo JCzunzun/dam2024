@@ -12,13 +12,13 @@ import edu.iesam.dam2024.app.loadUrl
 import edu.iesam.dam2024.databinding.FragmentSuperheroDetailBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SuperHeroDetailFragment : Fragment() {
 
     val args: SuperHeroDetailFragmentArgs by navArgs()
 
-    private lateinit var superHeroFactory: SuperHeroFactory
-    private lateinit var viewModel: SuperHeroDetailViewModel
+    val viewModel: SuperHeroDetailViewModel by viewModel()
 
     private var _binding: FragmentSuperheroDetailBinding? = null
     private val binding get() = _binding!!
@@ -35,8 +35,6 @@ class SuperHeroDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        superHeroFactory = SuperHeroFactory(requireContext())
-        viewModel = superHeroFactory.buildSuperHeroDetailViewMovie()
         setUpObeserver()
         args.idHero?.let {
             viewModel.viewCreated(it)

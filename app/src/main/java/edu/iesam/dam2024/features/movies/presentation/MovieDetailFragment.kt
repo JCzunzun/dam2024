@@ -18,7 +18,6 @@ class MovieDetailFragment :Fragment(){
 
     val args: MovieDetailFragmentArgs by navArgs()
 
-    private lateinit var movieFactory: MovieFactory
     private lateinit var viewModel: MovieDetailViewModel
 
     private var _binding: FragmentMovieDetailBinding? = null
@@ -36,8 +35,6 @@ class MovieDetailFragment :Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieFactory = MovieFactory(requireContext())
-        viewModel= movieFactory.buildMovieDetailViewModel()
         setUpObeserver()
         args.idMovie?.let {
             viewModel.viewCreated(it)

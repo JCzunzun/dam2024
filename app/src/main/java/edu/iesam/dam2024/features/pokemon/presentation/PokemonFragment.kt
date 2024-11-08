@@ -13,10 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import edu.iesam.dam2024.databinding.FragmentPokemonsBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.pokemon.presentation.adapter.PokemonAdapter
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonFragment:Fragment() {
-    private lateinit var pokemonFactory: PokemonFactory
-    private lateinit var viewModel: PokemonViewModel
+    val viewModel: PokemonViewModel by viewModel()
     private  val pokemonAdapter= PokemonAdapter ()
 
     private var _binding: FragmentPokemonsBinding? = null
@@ -35,8 +35,6 @@ class PokemonFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pokemonFactory = PokemonFactory(requireContext())
-        viewModel = pokemonFactory.buildListPokemonViewModel()
         viewModel.viewCreated()
         setupObserver()
 

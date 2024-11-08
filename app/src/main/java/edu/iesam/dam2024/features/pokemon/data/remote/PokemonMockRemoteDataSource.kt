@@ -2,7 +2,9 @@ package edu.iesam.dam2024.features.pokemon.data.remote
 
 import edu.iesam.dam2024.features.pokemon.domain.Poderes
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
+import org.koin.core.annotation.Single
 
+@Single
 class PokemonMockRemoteDataSource {
     companion object {
         val listaDePokemons = listOf(

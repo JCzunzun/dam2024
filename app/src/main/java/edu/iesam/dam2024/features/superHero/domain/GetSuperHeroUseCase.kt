@@ -1,5 +1,8 @@
 package edu.iesam.dam2024.features.superHero.domain
 
+import org.koin.core.annotation.Single
+
+@Single
 class GetSuperHeroUseCase(private val superHeroRepository: SuperHeroRepository) {
 
     operator suspend fun invoke(superHeroId: String): SuperHero? {

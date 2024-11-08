@@ -8,7 +8,9 @@ import edu.iesam.dam2024.features.pokemon.domain.GetPokemonUseCase
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.android.annotation.KoinViewModel
 
+@KoinViewModel
 class PokemonDetailViewModel (
     private val getPokemonUseCase: GetPokemonUseCase
 ):ViewModel(){

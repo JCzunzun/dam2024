@@ -17,7 +17,6 @@ class MoviesFragment : Fragment() {
 
     private val movieAdapter = MovieAdapter()
 
-    private lateinit var movieFactory: MovieFactory
     val moviesViewModel: MovieViewModel by viewModel()
 
     private var _binding: FragmentMoviesBinding ? = null
@@ -35,7 +34,6 @@ class MoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieFactory = MovieFactory(requireContext())
         moviesViewModel.viewCreated()
         setUpObeserver()
     }

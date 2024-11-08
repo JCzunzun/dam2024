@@ -2,10 +2,11 @@ package edu.iesam.dam2024.features.superHero.data
 
 import edu.iesam.dam2024.features.superHero.data.local.SuperHeroXmlLocalDataSource
 import edu.iesam.dam2024.features.superHero.data.remote.SuperHeroApiRemoteDataSource
-import edu.iesam.dam2024.features.superHero.data.remote.SuperHeroMockRemoteDataSource
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
 import edu.iesam.dam2024.features.superHero.domain.SuperHeroRepository
+import org.koin.core.annotation.Single
 
+@Single
 class SuperHeroDataRepository(
     private val local: SuperHeroXmlLocalDataSource,
     private val remoteDataSource: SuperHeroApiRemoteDataSource,

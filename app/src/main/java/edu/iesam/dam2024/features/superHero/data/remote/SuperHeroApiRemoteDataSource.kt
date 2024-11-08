@@ -1,7 +1,9 @@
 package edu.iesam.dam2024.features.superHero.data.remote
 
 import edu.iesam.dam2024.features.superHero.domain.SuperHero
+import org.koin.core.annotation.Single
 
+@Single
 class SuperHeroApiRemoteDataSource(private val superHeroService: SuperHeroService) {
 
     suspend fun getSuperHeros(): List<SuperHero> {

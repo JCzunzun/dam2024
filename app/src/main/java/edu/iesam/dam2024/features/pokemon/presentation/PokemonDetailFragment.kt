@@ -13,12 +13,12 @@ import edu.iesam.dam2024.app.loadUrl
 import edu.iesam.dam2024.databinding.FragmentPokemonDetailBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokemonDetailFragment : Fragment(){
     val args: PokemonDetailFragmentArgs by navArgs()
 
-    private lateinit var pokemonFactory: PokemonFactory
-    private lateinit var viewModel: PokemonDetailViewModel
+    val viewModel: PokemonDetailViewModel by viewModel()
 
     private var _binding : FragmentPokemonDetailBinding? = null
     private val binding get() = _binding!!
@@ -35,8 +35,6 @@ class PokemonDetailFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pokemonFactory = PokemonFactory(requireContext())
-        viewModel = pokemonFactory.builPokemonDetailViewModel()
         setupObserver()
         args.pokemonId?.let {
             viewModel.viewCreated(it)

@@ -3,10 +3,8 @@ package edu.iesam.dam2024.features.pokemon.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.features.pokemon.domain.Pokemon
-import edu.iesam.dam2024.features.pokemon.presentation.PokemonDiffUtil
 
 class PokemonAdapter : ListAdapter<Pokemon, PokemonViewHolder>(PokemonDiffUtil()) {
 

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import edu.iesam.dam2024.R
 import edu.iesam.dam2024.databinding.FragmentSuperheroListBinding
 import edu.iesam.dam2024.features.movies.presentation.ErrorApp
-import edu.iesam.dam2024.features.superHero.domain.SuperHero
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import edu.iesam.dam2024.features.superHero.presentation.adapter.SuperHeroAdapter
 
 class SuperHeroListFragment : Fragment(R.layout.fragment_superhero_list) {
@@ -24,8 +24,7 @@ class SuperHeroListFragment : Fragment(R.layout.fragment_superhero_list) {
     private var _binding: FragmentSuperheroListBinding?= null
     private val binding get() = _binding!!
 
-    private lateinit var superHeroFactory: SuperHeroFactory
-    private lateinit var viewModel: SuperHeroViewModel
+   val viewModel: SuperHeroViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,8 +38,6 @@ class SuperHeroListFragment : Fragment(R.layout.fragment_superhero_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        superHeroFactory = SuperHeroFactory(requireContext())
-        viewModel = superHeroFactory.buildViewModel()
         viewModel.loadSuperHeros()
         setupObserver()
     }
